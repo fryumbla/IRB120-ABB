@@ -11,6 +11,8 @@
 
 This package is written an tested on **Ubuntu 18.04 + ROS Melodic** environment. Dependencies are also for this environment.
 
+Note: the same package can work in **Ubuntu 16.04 + ROS Kinetic**
+
 ### 1.2. Dependencies Prerequisites
 
 There are a number of dependencies in this package, since the ABB robot is operated by ROS-Industrial package. Please install all the packages listed below in your Ubuntu PC, in the given order. These packages can be installed by `apt` package manager.
