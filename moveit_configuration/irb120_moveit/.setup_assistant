@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: irb120_description
+    relative_path: urdf/irb120.xacro
+    xacro_args: --inorder
+  SRDF:
+    relative_path: config/irb120_ABB.srdf
+  CONFIG:
+    author_name: Francisco Yumbla
+    author_email: fryumbla@espol.edu.ec
+    generated_timestamp: 1592548628

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<robot name="irb120_ABB_gripper" 
+    xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find irb120_description)/urdf/common_materials.xacro"/>
+    <xacro:include filename="$(find irb120_description)/urdf/irb120.xacro"/>
+    <!-- <xacro:include filename="$(find irb120_description)/urdf/robotiq_arg2f_140_model.xacro"/> -->
+
+    <!-- ros_control plugin -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin>
+    </gazebo>
+
+    <xacro:property name="irb120_ns" value="" />
+    <xacro:property name="gripper_ns" value="" />
+
+    
+    <!-- Description of the gripper -->
+    <xacro:include filename="$(find irb120_description)/urdf/robotiq_arg2f_140_model.xacro" />
+
+    <!-- bolting between link 6 and gripper -->
+    <joint name="${irb120_ns}gripper_bolting" type="fixed">
+        <parent link="${irb120_ns}link_6"/>
+        <child link="${gripper_ns}robotiq_arg2f_base_link"/>
+        <origin rpy="0 ${pi / 2} 0" xyz="0 0 0"/>
+    </joint>
+
+</robot>
