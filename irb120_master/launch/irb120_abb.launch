@@ -21,8 +21,8 @@
     <!-- <node name="joint_states" pkg="joint_state_publisher" type="joint_state_publisher"/> -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <!-- <include file="$(find rise_assembler_control)/launch/irb120_control.launch" /> -->
-    <include file="$(find irb120_moveit)/launch/move_group.launch" />
-    <!-- <include file="$(find irb120_moveit)/launch/moveit_planing_execution.launch" /> -->
+    <!-- <include file="$(find irb120_moveit)/launch/move_group.launch" /> -->
+    <include file="$(find irb120_moveit)/launch/moveit_planing_execution.launch" />
     
 
 
