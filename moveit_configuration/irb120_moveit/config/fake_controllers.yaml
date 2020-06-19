@@ -1,5 +1,5 @@
 controller_list:
-  - name: fake_irb120_arm_controller
+  - name: fake_abb_irb120_controller
     joints:
       - joint_1
       - joint_2
@@ -8,5 +8,5 @@ controller_list:
       - joint_5
       - joint_6
 initial:  # Define initial robot poses.
-  - group: irb120_arm
+  - group: abb_irb120
     pose: zero_pos
