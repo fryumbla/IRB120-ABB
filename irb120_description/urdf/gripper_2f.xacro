@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<robot name="gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robotiq_2f_85_description)/urdf/robotiq_2F_85.xacro"/>
+
+	<xacro:property name="PI" value="3.1415926535897931"/>
+
+ <!-- verificar angulo de support_gripper -->
+  <link name="gripper_support_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="1.570796327 0 0" />
+      <mass
+        value="0.30915" />
+      <inertia
+        ixx="0.00028972"
+        ixy="-5.7879E-10"
+        ixz="-1.8543E-06"
+        iyy="0.00030737"
+        iyz="1.682E-12"
+        izz="0.00019914" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.570796327 0 0.523598" />
+      <geometry>
+        <mesh
+          filename="package://irb120_description/meshes/supports/support_gripper.stl" />
+      </geometry>
+      <material name="green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.570796327 0 0.523598" /> 
+      <geometry>
+        <mesh
+          filename="package://irb120_description/meshes/supports/support_gripper.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="irb120_joint_gripper_support" type="fixed">
+    <parent link="tool0"/>
+    <child link="gripper_support_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.008"/>
+  </joint>
+  
+  <joint name="irb120_support_gripper" type="fixed">
+    <parent link="gripper_support_link"/>
+    <child link="coupling_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+
+  <!-- end effect point -->
+  <joint name="end_effect_point" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.15"/>
+    <parent link="gripper_support_link"/>
+    <child link="end_effect_point"/>
+  </joint>
+  <!-- end effect point -->
+  <link name="end_effect_point">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.8 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1.0e-06" ixy="0.0" ixz="0.0" iyy="1.0e-06" iyz="0.0" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+</robot>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="sim" default="false" />
+    <arg name="robot_ip" default="192.168.125.1" />
+    <arg name="J23_coupled" default="false" doc="If true, compensate for J2-J3 parallel linkage" />
+
+    <arg name="robot" default="false" />
+    <arg name="gripper_2f" default="false" />
+	<arg name="gripper_3f" default="false" />
+	<arg name="camera" default="false" />
+
+    <!-- Spawn controllers and joint_state_publisher's for ABB IRB 120 -->
+    <!-- Gazebo already publishes joint states: disable joint_state_publisher temporarily. -->
+    <rosparam command="load" file="$(find irb120_description)/config/joint_names_irb120.yaml" />
+
+    <include file="$(find abb_driver)/launch/robot_interface.launch">
+        <arg name="robot_ip" value="$(arg robot_ip)"/>
+        <!-- <arg name="J23_coupled" value="$(arg J23_coupled)" /> -->
+    </include>
+
+    <!-- <node name="joint_states" pkg="joint_state_publisher" type="joint_state_publisher"/> -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    
+    <include if="$(arg robot)" file="$(find irb120_description)/launch/real_irb120_moveit.launch" />
+
+    <include if="$(arg gripper_2f)" file="$(find irb120_description)/launch/real_irb120_2fgripper_moveit.launch" />
+
+    <include if="$(arg gripper_3f)" file="$(find irb120_description)/launch/real_irb120_3fgripper_moveit.launch" />
+    
+    <!-- Start the publisher for the left hand (the only hand) -->
+    <!-- <include file="$(find rise_assembler_control)/launch/gripper_control.launch" /> -->
+    <!-- <node name="joint_states" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+    
+
+</launch>

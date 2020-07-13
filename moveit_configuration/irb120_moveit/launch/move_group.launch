@@ -1,7 +1,5 @@
 <launch>
 
-  <include file="$(find rise_assembler_moveit)/launch/planning_context.launch" />
-  
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
@@ -53,14 +51,14 @@
   <!-- Trajectory Execution Functionality -->
   <include ns="move_group" file="$(find irb120_moveit)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_manage_controllers" value="true" />
-    <arg name="moveit_controller_manager" value="irb120_ABB" unless="$(arg fake_execution)"/>
+    <arg name="moveit_controller_manager" value="abb_irb120_model" unless="$(arg fake_execution)"/>
     <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
   </include>
 
   <!-- Sensors Functionality -->
-  <!-- <include ns="move_group" file="$(find irb120_moveit)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
-    <arg name="moveit_sensor_manager" value="irb120_ABB" />
-  </include> -->
+  <include ns="move_group" file="$(find irb120_moveit)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
+    <arg name="moveit_sensor_manager" value="abb_irb120_model" />
+  </include>
 
   <!-- Start the actual move_group node/action server -->
   <node name="move_group" launch-prefix="$(arg launch_prefix)" pkg="moveit_ros_move_group" type="move_group" respawn="false" output="screen" args="$(arg command_args)">

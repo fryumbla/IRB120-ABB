@@ -14,7 +14,7 @@
   <param name="trajectory_execution/allowed_start_tolerance" value="0.01"/> <!-- default 0.01 -->
 
   <!-- Load the robot specific controller manager; this sets the moveit_controller_manager ROS parameter -->
-  <arg name="moveit_controller_manager" default="irb120_ABB" />
+  <arg name="moveit_controller_manager" default="abb_irb120_model" />
   <include file="$(find irb120_moveit)/launch/$(arg moveit_controller_manager)_moveit_controller_manager.launch.xml" />
 
 </launch>

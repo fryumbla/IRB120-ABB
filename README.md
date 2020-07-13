@@ -40,3 +40,44 @@ To be updated...
 
 Open terminal and `roscore` and `Enter`. 
 Type `rosrun rise_assembler assembler_manual_controller` in another the terminal, and you will get a R-Viz to control the robot in real time.
+
+
+
+<!-- moveit
+
+    para crear uno nuevo moveit se debe anadir 
+    config folder
+    joint_names.yaml
+    
+    se debe copiar moveit_planing_execution.launch  cambiando con la carpeta moveit correspondiente
+
+    se debe cambiar en 
+    ros_controlllers.yaml
+
+    controller_list:
+  - name: irb_120_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+
+    por
+
+    controller_list:
+  - name: ""
+    action_ns: joint_trajectory_action
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6

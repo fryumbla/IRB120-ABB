@@ -1,11 +1,11 @@
 moveit_setup_assistant_config:
   URDF:
     package: irb120_description
-    relative_path: urdf/irb120.xacro
+    relative_path: urdf/irb120_main.xacro
     xacro_args: --inorder
   SRDF:
-    relative_path: config/irb120_ABB.srdf
+    relative_path: config/abb_irb120_model.srdf
   CONFIG:
     author_name: Francisco Yumbla
     author_email: fryumbla@espol.edu.ec
-    generated_timestamp: 1592554313
+    generated_timestamp: 1594292262

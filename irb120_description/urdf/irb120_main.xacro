@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<robot name="abb_irb120_model" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="gazebo" default="false"/>
+  <xacro:arg name="camera" default="false"/>
+  <xacro:arg name="gripper_2f" default="false"/>
+  <xacro:arg name="gripper_3f" default="false"/>
+    
+  <xacro:include filename="$(find irb120_description)/urdf/irb120.xacro"/>
+  <xacro:abb_irb120 prefix=""/>
+  
+  <link name="world"/>
+  
+  <joint name="fixed" type="fixed">
+      <parent link="world"/>
+      <child link="base_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+ 
+  <!-- camera -->
+  <xacro:if value="$(arg camera)">
+    <xacro:include filename="$(find irb120_description)/urdf/camera.xacro"/>
+  </xacro:if>
+
+  <!-- gripper -->
+  <xacro:if value="$(arg gripper_2f)">
+    <xacro:include filename="$(find irb120_description)/urdf/gripper_2f.xacro"/>
+  </xacro:if>
+
+  <!-- gripper_3f -->
+  <xacro:if value="$(arg gripper_3f)">
+    <xacro:include filename="$(find irb120_description)/urdf/gripper_3f.xacro"/>
+  </xacro:if>
+
+</robot>
