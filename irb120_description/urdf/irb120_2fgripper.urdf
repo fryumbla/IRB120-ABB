@@ -22,15 +22,15 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/base_link.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/base_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="link_1">
     <inertial>
@@ -47,15 +47,15 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/link_1.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/link_1.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="link_2">
     <inertial>
@@ -72,15 +72,15 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/link_2.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/link_2.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="link_3">
     <inertial>
@@ -97,15 +97,15 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/link_3.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/link_3.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="link_4">
     <inertial>
@@ -122,15 +122,15 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/link_4.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/link_4.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="link_5">
     <inertial>
@@ -147,15 +147,15 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/link_5.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/link_5.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="link_6">
     <inertial>
@@ -172,15 +172,15 @@
         <color rgba="0.1882353 0.1960784 0.2039216 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://irb120_description/meshes/collision/link_6.stl"/>
+        <mesh filename="package://irb120_description/meshes/visual/link_6.stl"/>
       </geometry>
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <!-- end of link list -->
   <!-- joint list -->
@@ -188,58 +188,53 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="base_link"/>
     <child link="link_1"/>
-    <limit effort="0" lower="-2.87979" upper="2.87979" velocity="4.36332"/>
+    <limit effort="30" lower="-2.87979" upper="2.87979" velocity="4.36332"/>
     <axis xyz="0 0 1"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="1.0" friction="0.0"/>
   </joint>
   <joint name="joint_2" type="revolute">
     <origin rpy="0 0 0" xyz="0 0 0.29"/>
     <parent link="link_1"/>
     <child link="link_2"/>
-    <limit effort="0" lower="-1.91986" upper="1.91986" velocity="4.36332"/>
+    <limit effort="30" lower="-1.91986" upper="1.91986" velocity="4.36332"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="1.0" friction="0.0"/>
   </joint>
   <joint name="joint_3" type="revolute">
     <origin rpy="0 0 0" xyz="0 0 0.27"/>
     <parent link="link_2"/>
     <child link="link_3"/>
-    <limit effort="0" lower="-1.91986" upper="1.22173" velocity="4.36332"/>
+    <limit effort="30" lower="-1.91986" upper="1.22173" velocity="4.36332"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="1.0" friction="0.0"/>
   </joint>
   <joint name="joint_4" type="revolute">
     <origin rpy="0 0 0" xyz="0 0 0.07"/>
     <parent link="link_3"/>
     <child link="link_4"/>
-    <limit effort="0" lower="-2.79253" upper="2.79253" velocity="5.58505"/>
+    <limit effort="30" lower="-2.79253" upper="2.79253" velocity="5.58505"/>
     <axis xyz="1 0 0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="1.0" friction="0.0"/>
   </joint>
   <joint name="joint_5" type="revolute">
     <origin rpy="0 0 0" xyz="0.302 0 0"/>
     <parent link="link_4"/>
     <child link="link_5"/>
-    <limit effort="0" lower="-2.094395" upper="2.094395" velocity="5.58505"/>
+    <limit effort="30" lower="-2.094395" upper="2.094395" velocity="5.58505"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="1.0" friction="0.0"/>
   </joint>
   <joint name="joint_6" type="revolute">
     <origin rpy="0 0 0" xyz="0.072 0 0"/>
     <parent link="link_5"/>
     <child link="link_6"/>
-    <limit effort="0" lower="-6.98132" upper="6.98132" velocity="7.33038"/>
+    <limit effort="30" lower="-6.98132" upper="6.98132" velocity="7.33038"/>
     <axis xyz="1 0 0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="1.0" friction="0.0"/>
   </joint>
   <!-- end of joint list -->
-  <!-- ROS-Industrial 'base' frame: base_link to ABB World Coordinates transform -->
-  <link name="base"/>
-  <joint name="base_link-base" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="base"/>
-  </joint>
+
+
   <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
   <link name="flange"/>
   <joint name="joint_6-flange" type="fixed">
@@ -260,6 +255,7 @@
     <child link="base_link"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
+
   <link name="robotiq_arg2f_base_link">
     <inertial>
       <origin rpy="0 0 0" xyz="8.625E-08 -4.6583E-06 0.03145"/>
@@ -275,19 +271,19 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_base_link.stl"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_base_link.stl"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="left_outer_knuckle">
-    <!--<inertial>
+    <inertial>
         <origin xyz="-0.000200000000003065 0.0199435877845359 0.0292245259211331" rpy="0 0 0" />
         <mass value="0.00853198276973456" />
         <inertia ixx="2.89328108496468E-06" ixy="-1.57935047237397E-19" ixz="-1.93980378593255E-19" iyy="1.86719750325683E-06" iyz="-1.21858577871576E-06" izz="1.21905238907251E-06" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -297,19 +293,19 @@
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_outer_knuckle.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_outer_knuckle.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="left_outer_finger">
-    <!--<inertial>
+    <inertial>
         <origin xyz="0.00030115855001899 0.0373907951953854 -0.0208027427000385" rpy="0 0 0" />
         <mass value="0.022614240507152" />
         <inertia ixx="1.52518312458174E-05" ixy="9.76583423954399E-10" ixz="-5.43838577022588E-10" iyy="6.17694243867776E-06" iyz="6.78636130740228E-06" izz="1.16494917907219E-05" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -319,19 +315,19 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_outer_finger.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_outer_finger.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="left_inner_finger">
-    <!--<inertial>
+    <inertial>
         <origin xyz="0.000299999999999317 0.0160078233491243 -0.0136945669206257" rpy="0 0 0" />
         <mass value="0.0104003125914103" />
         <inertia ixx="2.71909453810972E-06" ixy="1.35402465472579E-21" ixz="-7.1817349065269E-22" iyy="7.69100314106116E-07" iyz="6.74715432769696E-07" izz="2.30315190420171E-06" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -341,12 +337,12 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_inner_finger.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_inner_finger.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="left_inner_finger_pad">
     <visual>
@@ -358,7 +354,7 @@
         <color rgba="0.9 0.9 0.9 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <box size="0.022 0.00635 0.0375"/>
@@ -366,14 +362,14 @@
       <material name="">
         <color rgba="0.9 0.0 0.0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="left_inner_knuckle">
-    <!--<inertial>
+    <inertial>
         <origin xyz="0.000123011831763771 0.0507850843201817 0.00103968640075166" rpy="0 0 0" />
        <mass value="0.0271177346495152" />
         <inertia ixx="2.61910379223783E-05" ixy="-2.43616858946494E-07" ixz="-6.37789906117123E-09" iyy="2.8270243746167E-06" iyz="-5.37200748039765E-07" izz="2.83695868220296E-05" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -383,19 +379,19 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_inner_knuckle.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_inner_knuckle.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="right_outer_knuckle">
-    <!--<inertial>
+    <inertial>
         <origin xyz="-0.000200000000003065 0.0199435877845359 0.0292245259211331" rpy="0 0 0" />
         <mass value="0.00853198276973456" />
         <inertia ixx="2.89328108496468E-06" ixy="-1.57935047237397E-19" ixz="-1.93980378593255E-19" iyy="1.86719750325683E-06" iyz="-1.21858577871576E-06" izz="1.21905238907251E-06" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -405,19 +401,19 @@
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_outer_knuckle.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_outer_knuckle.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="right_outer_finger">
-    <!--<inertial>
+    <inertial>
         <origin xyz="0.00030115855001899 0.0373907951953854 -0.0208027427000385" rpy="0 0 0" />
         <mass value="0.022614240507152" />
         <inertia ixx="1.52518312458174E-05" ixy="9.76583423954399E-10" ixz="-5.43838577022588E-10" iyy="6.17694243867776E-06" iyz="6.78636130740228E-06" izz="1.16494917907219E-05" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -427,19 +423,19 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_outer_finger.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_outer_finger.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="right_inner_finger">
-    <!--<inertial>
+    <inertial>
         <origin xyz="0.000299999999999317 0.0160078233491243 -0.0136945669206257" rpy="0 0 0" />
         <mass value="0.0104003125914103" />
         <inertia ixx="2.71909453810972E-06" ixy="1.35402465472579E-21" ixz="-7.1817349065269E-22" iyy="7.69100314106116E-07" iyz="6.74715432769696E-07" izz="2.30315190420171E-06" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -449,12 +445,12 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_inner_finger.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_inner_finger.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="right_inner_finger_pad">
     <visual>
@@ -466,7 +462,7 @@
         <color rgba="0.9 0.9 0.9 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <box size="0.022 0.00635 0.0375"/>
@@ -474,14 +470,14 @@
       <material name="">
         <color rgba="0.9 0.0 0.0 1"/>
       </material>
-    </collision> -->
+    </collision>
   </link>
   <link name="right_inner_knuckle">
-    <!--<inertial>
+    <inertial>
         <origin xyz="0.000123011831763771 0.0507850843201817 0.00103968640075166" rpy="0 0 0" />
        <mass value="0.0271177346495152" />
         <inertia ixx="2.61910379223783E-05" ixy="-2.43616858946494E-07" ixz="-6.37789906117123E-09" iyy="2.8270243746167E-06" iyz="-5.37200748039765E-07" izz="2.83695868220296E-05" />
-        </inertial> -->
+        </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -491,12 +487,12 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/collision/robotiq_arg2f_85_inner_knuckle.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_arg2f_85_inner_knuckle.dae" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <joint name="finger_joint" type="revolute">
     <origin rpy="0 0 3.14159265359" xyz="0 -0.0306011 0.054904"/>
@@ -525,7 +521,7 @@
     <parent link="left_outer_finger"/>
     <child link="left_inner_finger"/>
     <axis xyz="1 0 0"/>
-    <limit effort="1000" lower="0" upper="0.8757" velocity="2.0"/>
+    <limit effort="1000" lower="-0.8757" upper="0.8757" velocity="2.0"/>
     <mimic joint="finger_joint" multiplier="-1" offset="0"/>
   </joint>
   <joint name="left_inner_finger_pad_joint" type="fixed">
@@ -562,7 +558,7 @@
     <parent link="right_outer_finger"/>
     <child link="right_inner_finger"/>
     <axis xyz="1 0 0"/>
-    <limit effort="1000" lower="0" upper="0.8757" velocity="2.0"/>
+    <limit effort="1000" lower="-0.8757" upper="0.8757" velocity="2.0"/>
     <mimic joint="finger_joint" multiplier="-1" offset="0"/>
   </joint>
   <joint name="right_inner_finger_pad_joint" type="fixed">
@@ -582,20 +578,20 @@
   </transmission>
   <link name="coupling_link">
     <visual>
-      <origin rpy="0 0 1.57079632679" xyz="0 0 0.007"/>
+      <origin rpy="0 0 1.57079632679" xyz="0.037 -0.037 0"/>
       <geometry>
-        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_gripper_couplingm.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_gripper_couplingm.stl" />
       </geometry>
       <material name="">
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
     </visual>
-    <!-- <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.037 -0.037 0"/>
       <geometry>
         <mesh filename="package://robotiq_2f_85_description/meshes/visual/robotiq_gripper_couplingm.stl"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <joint name="coupling_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.011"/>
@@ -616,12 +612,12 @@
       </geometry>
       <material name="green"/>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="1.570796327 0 0.523598" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://irb120_description/meshes/supports/support_gripper.stl"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <joint name="irb120_joint_gripper_support" type="fixed">
     <parent link="tool0"/>
@@ -634,13 +630,13 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
   <!-- end effect point -->
-  <!-- <joint name="end_effect_point" type="fixed">
+  <joint name="end_effect_point" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.15"/>
     <parent link="gripper_support_link"/>
     <child link="end_effect_point"/>
-  </joint> -->
+  </joint>
   <!-- end effect point -->
-  <!-- <link name="end_effect_point">
+  <link name="end_effect_point">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -655,5 +651,5 @@
       <mass value="0.001"/>
       <inertia ixx="1.0e-06" ixy="0.0" ixz="0.0" iyy="1.0e-06" iyz="0.0" izz="1.0e-06"/>
     </inertial>
-  </link> -->
+  </link>
 </robot>

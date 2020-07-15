@@ -10,7 +10,7 @@
 			gripper_3f:=$(arg gripper_3f)"/>
 	
 	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find irb120_description)/rviz_config/default.rviz"/>
 	
 </launch>

@@ -30,16 +30,17 @@ void joint_callback(const sensor_msgs::JointState& data)
   pub_msg.name=data.name;
   pub_msg.position = data.position;
 
-  char* joints[12]={"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6","finger_joint", "left_inner_knuckle_joint","left_inner_finger_joint", "right_outer_knuckle_joint", "right_inner_knuckle_joint", "right_inner_finger_joint"};
+  char* joints[6]={"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6"};
   
-  int joint_handle[12]={0,0,0,0,0,0,0,0,0,0,0,0};
+  int joint_handle[6]={0,0,0,0,0,0};
 
-  for (int i=0;i<=11; ++i){
+  for (int i=0;i<=5; ++i){
     joint_handle[i]=found(clientID,joints[i],joint_handle[i],i+1);
   }
 
-  for (int i=0;i<=11; ++i){
+  for (int i=0;i<=5; ++i){
     simxSetJointTargetPosition(clientID, (simxInt) joint_handle[i], data.position.at(i), simx_opmode_oneshot);
+    std::cout << data.position.at(i) << '\n';
   }
 
 }
