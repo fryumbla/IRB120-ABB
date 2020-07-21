@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<robot name="table" xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<material name="coral">
+		<color rgba="${255/255} ${127/255} ${80/255} 1.0"/>
+	</material>
+	
+	<!-- HERE you can change the position of the robot in the table -->
+	<link name="table">
+		<visual>
+			<origin rpy="0 0 0" xyz="0.2 0 -0.005"/>
+			<geometry>
+			<box size="0.8 1.6 0.01"/>
+			</geometry>
+			<material name="coral"/>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.2 0 -0.005"/>
+			<geometry>
+			<box size="0.8 1.6 0.01"/>
+			</geometry>
+			<material name="coral"/>
+		</collision>
+		<inertial>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<mass value="0.001"/>
+			<inertia ixx="1.0e-06" ixy="0.0" ixz="0.0" iyy="1.0e-06" iyz="0.0" izz="1.0e-06"/>
+		</inertial>
+  	</link>	
+
+	<joint name="table" type="fixed">
+		<parent link="world"/>
+		<child link="table"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</joint>
+
+	<!-- end effect point -->
+	<joint name="end_effect_point" type="fixed">
+		<origin rpy="0 0 0" xyz="0 0 0.24"/>
+		<parent link="tool0"/>
+		<child link="end_effect_point"/>
+	</joint>
+	<!-- end effect point -->
+	<link name="end_effect_point">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 -0.12"/>
+			<geometry>
+				<box size="0.01 0.01 0.24"/>
+			</geometry>
+			<material name="">
+				<color rgba="0.8 0.0 0.0 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 -0.12"/>
+			<geometry>
+				<box size="0.01 0.01 0.24"/>
+			</geometry>
+			<material name="">
+				<color rgba="0.8 0.0 0.0 1.0"/>
+			</material>
+		</collision>
+		<inertial>
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<mass value="0.001"/>
+		<inertia ixx="1.0e-06" ixy="0.0" ixz="0.0" iyy="1.0e-06" iyz="0.0" izz="1.0e-06"/>
+		</inertial>
+	</link>
+
+</robot>

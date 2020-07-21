@@ -6,6 +6,7 @@
     <arg name="J23_coupled" default="false" doc="If true, compensate for J2-J3 parallel linkage" />
 
     <arg name="robot" default="false" />
+    <arg name="table" default="false" />
     <arg name="gripper_2f" default="false" />
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />
@@ -27,6 +28,8 @@
     <include if="$(arg gripper_2f)" file="$(find irb120_description)/launch/real_irb120_2fgripper_moveit.launch" />
 
     <include if="$(arg gripper_3f)" file="$(find irb120_description)/launch/real_irb120_3fgripper_moveit.launch" />
+
+    <include if="$(arg table)" file="$(find irb120_description)/launch/real_irb120_table_moveit.launch" />
     
     <!-- Start the publisher for the left hand (the only hand) -->
     <!-- <include file="$(find rise_assembler_control)/launch/gripper_control.launch" /> -->

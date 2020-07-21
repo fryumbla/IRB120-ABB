@@ -5,6 +5,7 @@
 	<arg name="camera" default="false" />
 
 	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb120_description)/urdf/irb120_main.xacro 
+			table:=$(arg table) 
 			camera:=$(arg camera)
 			gripper_2f:=$(arg gripper_2f)
 			gripper_3f:=$(arg gripper_3f)"/>

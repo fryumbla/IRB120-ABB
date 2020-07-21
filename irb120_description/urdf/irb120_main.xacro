@@ -2,6 +2,7 @@
 <robot name="abb_irb120_model" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:arg name="gazebo" default="false"/>
+  <xacro:arg name="table" default="false"/>
   <xacro:arg name="camera" default="false"/>
   <xacro:arg name="gripper_2f" default="false"/>
   <xacro:arg name="gripper_3f" default="false"/>
@@ -16,7 +17,12 @@
       <child link="base_link"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
- 
+
+  <!-- table -->
+  <xacro:if value="$(arg table)">
+    <xacro:include filename="$(find irb120_description)/urdf/table.xacro"/>
+  </xacro:if>
+
   <!-- camera -->
   <xacro:if value="$(arg camera)">
     <xacro:include filename="$(find irb120_description)/urdf/camera.xacro"/>
