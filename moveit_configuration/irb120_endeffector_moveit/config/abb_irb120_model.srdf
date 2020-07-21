@@ -35,51 +35,11 @@
         <joint name="joint_2" value="0" />
         <joint name="joint_3" value="0" />
         <joint name="joint_4" value="0" />
-        <joint name="joint_5" value="0" />
-        <joint name="joint_6" value="0" />
-    </group_state>
-    <group_state name="eff_down" group="irb120">
-        <joint name="joint_1" value="0" />
-        <joint name="joint_2" value="0" />
-        <joint name="joint_3" value="0" />
-        <joint name="joint_4" value="0" />
         <joint name="joint_5" value="1.5707" />
-        <joint name="joint_6" value="0" />
-    </group_state>
-    <group_state name="endeffector" group="irb120">
-        <joint name="joint_1" value="0" />
-        <joint name="joint_2" value="0" />
-        <joint name="joint_3" value="0" />
-        <joint name="joint_4" value="0" />
-        <joint name="joint_5" value="1.5707" />
-        <joint name="joint_6" value="-0.9273" />
-    </group_state>
-    <group_state name="correcend" group="irb120">
-        <joint name="joint_1" value="0" />
-        <joint name="joint_2" value="0" />
-        <joint name="joint_3" value="0" />
-        <joint name="joint_4" value="0" />
-        <joint name="joint_5" value="1.5707" />
-        <joint name="joint_6" value="0.9273" />
-    </group_state>
-    <group_state name="final" group="irb120">
-        <joint name="joint_1" value="0" />
-        <joint name="joint_2" value="0" />
-        <joint name="joint_3" value="0" />
-        <joint name="joint_4" value="0" />
-        <joint name="joint_5" value="1.5707" />
-        <joint name="joint_6" value="0.643496" />
-    </group_state>
-    <group_state name="finalfinal" group="irb120">
-        <joint name="joint_1" value="0" />
-        <joint name="joint_2" value="0.1744" />
-        <joint name="joint_3" value="0.3491" />
-        <joint name="joint_4" value="0" />
-        <joint name="joint_5" value="1.0471" />
-        <joint name="joint_6" value="0.643496" />
+        <joint name="joint_6" value="0.6434" />
     </group_state>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="Fixedjoint" type="fixed" parent_frame="world" child_link="world" />
+    <virtual_joint name="VirualJoint" type="fixed" parent_frame="world" child_link="world" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link_2" reason="Never" />
@@ -97,6 +57,7 @@
     <disable_collisions link1="link_3" link2="link_4" reason="Adjacent" />
     <disable_collisions link1="link_3" link2="link_5" reason="Never" />
     <disable_collisions link1="link_3" link2="link_6" reason="Never" />
+    <disable_collisions link1="link_3" link2="table" reason="Never" />
     <disable_collisions link1="link_4" link2="link_5" reason="Adjacent" />
     <disable_collisions link1="link_5" link2="link_6" reason="Adjacent" />
 </robot>

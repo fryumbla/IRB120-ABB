@@ -36,7 +36,7 @@
 
 	<!-- end effect point -->
 	<joint name="end_effect_point" type="fixed">
-		<origin rpy="0 0 0" xyz="0 0 0.24"/>
+		<origin rpy="0 0 -0.6434" xyz="0 0 0.24"/>
 		<parent link="tool0"/>
 		<child link="end_effect_point"/>
 	</joint>
