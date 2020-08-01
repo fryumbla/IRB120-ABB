@@ -1,0 +1,12 @@
+<launch>
+
+    
+    <node name='key2vel' pkg='irb120_master' type='key2vel.py' />
+    
+    <node name='keyboard' pkg='keyboard' type='keyboard' />
+
+    <node name='example' pkg='irb120_master' type='example_motion' output='screen' />
+
+
+
+</launch>

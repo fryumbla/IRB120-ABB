@@ -3,62 +3,84 @@
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseArray.h>
 #include <iostream> 
+#include "ros/ros.h"
+#include "std_msgs/Float32.h"
+#include "geometry_msgs/TwistStamped.h"
+#include "geometry_msgs/PoseStamped.h"
   
 using namespace std;
 
 geometry_msgs::PoseArray pos_connectors;
+geometry_msgs::Pose goalpos;
+float step = 0.005;
+float anglestep = 1.0;
+
+void posCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
+{
+  goalpos.position.x = msg->pose.position.x;
+  goalpos.position.y = msg->pose.position.y;
+  goalpos.position.z = msg->pose.position.z;
+
+  goalpos.orientation.w = msg->pose.orientation.w;
+  goalpos.orientation.x = msg->pose.orientation.x;
+  goalpos.orientation.y = msg->pose.orientation.y;
+  goalpos.orientation.z = msg->pose.orientation.z;
+}
+
+void stepCallback(const std_msgs::Float32::ConstPtr& msg)
+{
+  step = msg->data;
+}
+
+void anglestepCallback(const std_msgs::Float32::ConstPtr& msg)
+{
+  anglestep = msg->data;
+}
 
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "irb120_control");
-  ros::NodeHandle node_handle;  
-  ros::AsyncSpinner spinner(1);
-  spinner.start();
+  ros::NodeHandle node_handle;
+  ros::Rate loop_rate(100);
+
+  // ros::Subscriber vel_sub = node_handle.subscribe("/input/vel", 10, velCallback);
+  ros::Subscriber pos_sub = node_handle.subscribe("/input/pos", 10, posCallback);
+  ros::Subscriber step_sub = node_handle.subscribe("/input/step", 10, stepCallback);
+  ros::Subscriber anglestep_sub = node_handle.subscribe("/input/anglestep", 10, anglestepCallback);
+  
   
   moveit::planning_interface::MoveGroupInterface group("irb120");
   group.setPlanningTime(1);//0.1
 
-  // start programing
+  ros::AsyncSpinner spinner(10);
+  spinner.start();
 
-  // We can print the name of the reference frame for this robot.
-  ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
+  geometry_msgs::Pose current_pose;
+  current_pose = group.getCurrentPose().pose;
+  goalpos = current_pose;
+
+  group.setPoseTarget(goalpos);
+
   
-  // We can also print the name of the end-effector link for this group.
-  ROS_INFO("Reference frame: %s", group.getEndEffectorLink().c_str());
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+  // group.plan(my_plan); 
 
-    geometry_msgs::Pose goalpos;
-  
-    goalpos.position.x = 0.30202;
-    goalpos.position.y = 0;
-    goalpos.position.z = 0.318022; // this is z go down put 0
-    goalpos.orientation.w = 0;
-    goalpos.orientation.x = 0;
-    goalpos.orientation.y = 1;
-    goalpos.orientation.z = 0;
-    group.setPoseTarget(goalpos);
+  int key=0;
+  std::cout << std::fixed;
+  std::cout.precision(3);
 
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-    moveit::planning_interface::MoveItErrorCode success = group.plan(my_plan); 
-    ROS_INFO("Visualizing plan 1 (pose goal) %s",success.val ? "":"FAILED"); 
-    // group.execute(my_plan);
-    group.move();
-
-    sleep(2.0);
-
-    // goalpos.position.y = 0.0001; // this is z go down put 0
-    goalpos.position.z = 0.0001; // this is z go down put 0
+  while(ros::ok())
+  {
+    // std::cout << "x: " << goalpos.position.x << "  y: " << goalpos.position.y << "  z: " << goalpos.position.z << "  yaw: " << atan2(2*(goalpos.orientation.w*goalpos.orientation.z + goalpos.orientation.x*goalpos.orientation.y), (1 - 2*(goalpos.orientation.y*goalpos.orientation.y + goalpos.orientation.z*goalpos.orientation.z)))/3.141592*180.0 -180.0<< "  pitch: " << asin(2*(goalpos.orientation.w*goalpos.orientation.y - goalpos.orientation.z*goalpos.orientation.x))/3.141592*180.0 << "  step: " << step <<"  anglestep: " << anglestep *2 <<std::endl;
+    std::cout << "x: " << goalpos.position.x << "  y: " << goalpos.position.y << "  z: " << goalpos.position.z << "  w: " << goalpos.orientation.w << "  xa: " << goalpos.orientation.x << "  ya: " << goalpos.orientation.y << "  za: " << goalpos.orientation.z <<std::endl;
 
     group.setPoseTarget(goalpos);
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan1;
-    moveit::planning_interface::MoveItErrorCode success1 = group.plan(my_plan1); 
-    ROS_INFO("Visualizing plan 1 (pose goal) %s",success1.val ? "":"FAILED"); 
+    group.plan(my_plan);
     group.move();
-    sleep(2.0);
-  
-  // sleep(10.0);
 
-  // ros::waitForShutdown();
-  // ros::spin();
+    loop_rate.sleep();
+    ros::spinOnce();
+  }
 
   return 0;
 }
