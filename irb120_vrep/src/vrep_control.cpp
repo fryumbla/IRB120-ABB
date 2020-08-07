@@ -1,4 +1,6 @@
-#include "../remoteApi/extApi.h"
+extern "C" {
+    #include "/home/francisco/cobots_ws/src/IRB120-ABB/irb120_vrep/remoteApi/extApi.h"
+}
 #include <iostream>
 #include <string>
 #include <ros/ros.h>
@@ -20,7 +22,6 @@ int found(int a,char* b,int c,int d)
     return c;
     cout << "joint " << d << " found"  << std::endl;
   }
-
 }
 
 void joint_callback(const sensor_msgs::JointState& data)
@@ -28,15 +29,22 @@ void joint_callback(const sensor_msgs::JointState& data)
   pub_msg.name=data.name;
   pub_msg.position = data.position;
 
-  char* joints[12]={"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6","finger_joint", "left_inner_knuckle_joint","left_inner_finger_joint", "right_outer_knuckle_joint", "right_inner_knuckle_joint", "right_inner_finger_joint"};
-  
-  int joint_handle[12]={0,0,0,0,0,0,0,0,0,0,0,0};
-
-  for (int i=0;i<=11; ++i){
-    joint_handle[i]=found(clientID,joints[i],joint_handle[i],i+1);
+  std::vector<char*> joints;
+  for (int i=0;i<data.name.size(); ++i){
+    char *cstr = new char[data.name.at(i).length() + 1];
+    strcpy(cstr, data.name.at(i).c_str());
+    joints.push_back(cstr);
   }
 
-  for (int i=0;i<=11; ++i){
+  std::vector<int> joint_handle;
+  for (int i = 0; i < data.name.size(); i++)
+  {
+    joint_handle.push_back(0);
+  }
+  for (int i=0;i<data.name.size(); ++i){
+    joint_handle[i]=found(clientID,joints[i],joint_handle[i],i+1);
+  }
+  for (int i=0;i<data.name.size(); ++i){
     simxSetJointTargetPosition(clientID, (simxInt) joint_handle[i], data.position.at(i), simx_opmode_oneshot);
   }
 
@@ -51,7 +59,7 @@ int main(int argc, char **argv)
   
   if (clientID!=-1)
   {
-    cout << "Servidor conectado!" << std::endl;
+    cout << "Server conected!" << std::endl;
     
     ros::init(argc, argv, "vrep_communication");
     ros::NodeHandle nh = ros::NodeHandle();
@@ -64,10 +72,10 @@ int main(int argc, char **argv)
 
     ros::spin();
     simxFinish(clientID); // fechando conexao com o servidor
-    cout << "Conexao fechada!" << std::endl;
+    cout << "Connection over!" << std::endl;
   }
   else
-    cout << "Problemas para conectar con servidor!" << std::endl;
+    cout << "Server connector problem!" << std::endl;
   return 0;
 }
 
