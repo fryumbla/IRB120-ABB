@@ -24,7 +24,8 @@ There are a number of dependencies in this package, since the ABB robot is opera
 * ros-melodic-industrial-robot-simulator
 * ros-melodic-industrial-utils
 * ros-melodic-abb
-* ros-kinetic-moveit
+* ros-melodic-moveit
+* ros-melodic-joint-state-publisher-gui
 
 
 sudo pip install ds4drv
@@ -35,7 +36,7 @@ Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_ma
 
 ## 2. Structure of Package
 
-To be updated...
+*Ubuntu 18.04 + ROS Melodic*
 
 
 ## 3. How to Use
