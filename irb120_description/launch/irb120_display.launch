@@ -1,5 +1,6 @@
 <launch>
 
+	<arg name="table" default="false" />
 	<arg name="gripper_2f" default="false" />
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />

@@ -28,23 +28,82 @@ There are a number of dependencies in this package, since the ABB robot is opera
 * ros-melodic-joint-state-publisher-gui
 
 
-sudo pip install ds4drv
 
 
 Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
+**WARNING: If you planing use grippers with this robot. You need copy the gripper package https://github.com/fryumbla/Robotiq-grippers.git**
+
+sudo pip install ds4drv
 
 
 ## 2. Structure of Package
 
-*Ubuntu 18.04 + ROS Melodic*
+* **irb120_description:** This package contains the URDF and XACRO friles for diferents configuration of the robot with grippers.
+* **irb120_master:** This pasckage contains a diferrents examples of motion used MoveIt and the joystick&keyboard control of the real robot.
+* **irb120_vrep:** This package contains the communication with V-REP simulator including examples and scenes
+* **irb120_configuration_moveit:** This package contains the diferent MoveIt configuration of diferents configuration of the robot
 
 
 ## 3. How to Use
 
-### 3.1. CLI Controller
+### 3.1. Simulation
 
 Open terminal and `roscore` and `Enter`. 
-Type `rosrun rise_assembler assembler_manual_controller` in another the terminal, and you will get a R-Viz to control the robot in real time.
+
+#### 3.1.1 Rviz Visualization
+
+1. Launch the robot visualization Rviz
+   ```
+   roslaunch irb120_description irb120_display.launch
+   ```
+   If you need see other configuration you can space and include **gripper_2f:=true** or **gripper_3f:=true**
+   ```
+   roslaunch irb120_description irb120_display.launch gripper_2f:=true
+   ```
+
+1. Launch the robot with Moveit configuration
+   ```
+   roslaunch irb120_description irb120_moveit.launch
+   ```
+   If you need see other configuration you can space and include **gripper_2f:=true** or **gripper_3f:=true**
+   ```
+   roslaunch irb120_description irb120_moveit.launch gripper_2f:=true
+   ```
+
+#### 3.1.2 V-REP Simulation
+
+1. V-REP execution (Since simulation is performed with vrep remote api, roscore must be executed first)
+
+2. Run the next node for the communication Vrep to ros
+   ```
+   rosrun bioloid_vrep comunication
+   ```
+
+To see the list of movement, type `rosrun bioloid_gp_master movement.py` program, introduce the number do you want to move `1 2 3` and `Enter`.
+This node publis the joints goals in the topic `/joint_goals`
+
+#### 3.1.2 Gazebo Simulation (in construction)
+
+1. Launch the robot in gazebo
+   ```
+   roslaunch bioloidgp_social_robot gazebo.launch
+
+   ```
+
+2. Run the next node for the communication ROS to Gazebo
+   ```
+   rosrun bioloid_gp_master communitation_gazebo.py 
+   ```
+To see the list of movement, type `rosrun bioloid_gp_master movement.py` program, introduce the number do you want to move `1 2 3` and `Enter`.
+This node publis the joints goals in the topic `/joint_goals`
+
+
+### 3.2. Real Robot
+
+You can use the communication controller. Type `rosrun bioloid_gp_communication communication.py` in the terminal, , and you will get the comunication TTL to the Dynamixel motors. 
+To see the list of movement, type `rosrun bioloid_gp_master movement.py` program, introduce the number do you want to move `1 2 3` and `Enter`.
+
+
 
 
 
