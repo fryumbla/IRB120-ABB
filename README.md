@@ -26,6 +26,10 @@ There are a number of dependencies in this package, since the ABB robot is opera
 * ros-melodic-abb
 * ros-kinetic-moveit
 
+
+sudo pip install ds4drv
+
+
 Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
 
 

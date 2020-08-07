@@ -20,7 +20,6 @@ void posCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
   goalpos.position.x = msg->pose.position.x;
   goalpos.position.y = msg->pose.position.y;
   goalpos.position.z = msg->pose.position.z;
-
   goalpos.orientation.w = msg->pose.orientation.w;
   goalpos.orientation.x = msg->pose.orientation.x;
   goalpos.orientation.y = msg->pose.orientation.y;
@@ -61,10 +60,7 @@ int main(int argc, char **argv)
 
   group.setPoseTarget(goalpos);
 
-  
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-  // group.plan(my_plan); 
-
   int key=0;
   std::cout << std::fixed;
   std::cout.precision(3);

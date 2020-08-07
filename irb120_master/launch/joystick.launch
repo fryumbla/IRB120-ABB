@@ -1,0 +1,11 @@
+<launch>
+
+    <include file="$(find ds4_driver)/launch/ds4_driver.launch" />
+
+    <node name='joystick' pkg='irb120_master' type='joystickps4.py' />
+
+    <node name='example' pkg='irb120_master' type='example_motion' output='screen' />
+
+
+
+</launch>
