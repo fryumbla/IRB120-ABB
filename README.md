@@ -31,6 +31,7 @@ There are a number of dependencies in this package, since the ABB robot is opera
 
 
 Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
+
 **WARNING: If you planing use grippers with this robot. You need copy the gripper package https://github.com/fryumbla/Robotiq-grippers.git**
 
 sudo pip install ds4drv
