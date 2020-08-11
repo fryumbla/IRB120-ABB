@@ -24,9 +24,9 @@
         <arg name="verbose" value="true" />
     </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rise_assembler_model)/urdf/rise_assembler.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find irb120_description)/urdf/irb120.xacro'" />
     <include file="$(find rise_assembler_control)/launch/irb120_control.launch" />
-    <node name="spawn_assembler" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model rise_assembler" output="screen" />
+    <node name="spawn_assembler" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model irb120" output="screen" />
 
     <!-- Spawn controllers and joint_state_publisher's for ABB IRB 120 -->
     <!-- Gazebo already publishes joint states: disable joint_state_publisher temporarily. -->
