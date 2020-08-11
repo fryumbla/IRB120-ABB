@@ -69,7 +69,8 @@ Open terminal and `roscore` and `Enter`.
 
 #### 3.1.2 V-REP Simulation
 
-1. V-REP execution (Since simulation is performed with vrep remote api, roscore must be executed first): Open the scene of the irb120_vrep/scenes folder
+1. V-REP execution (Since simulation is performed with vrep remote api and PLAY, roscore must be executed first): Open the scene of the irb120_vrep/scenes folder 
+
 
 2. Run the step 3.1.1 visualization Rviz or MoveIt
 
