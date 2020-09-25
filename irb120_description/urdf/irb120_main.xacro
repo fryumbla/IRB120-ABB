@@ -18,6 +18,11 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
 
+  <!-- gazebo -->
+  <xacro:if value="$(arg gazebo)">
+    <xacro:include filename="$(find irb120_description)/urdf/gazebo.xacro"/>
+  </xacro:if>
+
   <!-- table -->
   <xacro:if value="$(arg table)">
     <xacro:include filename="$(find irb120_description)/urdf/table.xacro"/>

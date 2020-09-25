@@ -6,6 +6,4 @@
 
     <node name='example' pkg='irb120_master' type='example_motion' output='screen' />
 
-
-
 </launch>

@@ -1,0 +1,16 @@
+<launch>
+
+    <arg name="gazebo" default="false" />
+	<arg name="table" default="false" />
+	<arg name="gripper_2f" default="false" />
+	<arg name="gripper_3f" default="false" />
+	<arg name="camera" default="false" />
+
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb120_description)/urdf/irb120_main.xacro 
+			gazebo:=$(arg gazebo)
+            table:=$(arg table) 
+			camera:=$(arg camera)
+			gripper_2f:=$(arg gripper_2f)
+			gripper_3f:=$(arg gripper_3f)"/>
+	
+</launch>

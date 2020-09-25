@@ -94,7 +94,6 @@
     <disable_collisions link1="base_link" link2="coupling_link" reason="Never" />
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link_2" reason="Never" />
-    <disable_collisions link1="coupling_link" link2="end_effect_point" reason="Never" />
     <disable_collisions link1="coupling_link" link2="gripper_support_link" reason="Adjacent" />
     <disable_collisions link1="coupling_link" link2="left_inner_finger" reason="Never" />
     <disable_collisions link1="coupling_link" link2="left_inner_finger_pad" reason="Never" />
@@ -114,17 +113,10 @@
     <disable_collisions link1="coupling_link" link2="right_outer_knuckle" reason="Never" />
     <disable_collisions link1="coupling_link" link2="robotiq_arg2f_base_link" reason="Adjacent" />
     <disable_collisions link1="end_effect_point" link2="gripper_support_link" reason="Adjacent" />
-    <disable_collisions link1="end_effect_point" link2="left_inner_knuckle" reason="Never" />
-    <disable_collisions link1="end_effect_point" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="end_effect_point" link2="left_outer_knuckle" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_3" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_4" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_5" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_6" reason="Never" />
-    <disable_collisions link1="end_effect_point" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="end_effect_point" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="end_effect_point" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="end_effect_point" link2="robotiq_arg2f_base_link" reason="Never" />
     <disable_collisions link1="gripper_support_link" link2="left_inner_finger" reason="Never" />
     <disable_collisions link1="gripper_support_link" link2="left_inner_knuckle" reason="Never" />
     <disable_collisions link1="gripper_support_link" link2="left_outer_finger" reason="Never" />

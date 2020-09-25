@@ -73,6 +73,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        coupling_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         end_effect_point:
           Alpha: 1
           Show Axes: false
@@ -82,6 +87,36 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        gripper_support_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_inner_finger:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_inner_finger_pad:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_inner_knuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_outer_finger:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_outer_knuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         link_1:
           Alpha: 1
           Show Axes: false
@@ -112,7 +147,32 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        table:
+        right_inner_finger:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_inner_finger_pad:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_inner_knuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_outer_finger:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_outer_knuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_arg2f_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -140,9 +200,23 @@ Visualization Manager:
           Value: false
         base_link:
           Value: false
+        coupling_link:
+          Value: false
         end_effect_point:
-          Value: true
+          Value: false
         flange:
+          Value: false
+        gripper_support_link:
+          Value: false
+        left_inner_finger:
+          Value: false
+        left_inner_finger_pad:
+          Value: false
+        left_inner_knuckle:
+          Value: false
+        left_outer_finger:
+          Value: false
+        left_outer_knuckle:
           Value: false
         link_1:
           Value: false
@@ -156,10 +230,20 @@ Visualization Manager:
           Value: false
         link_6:
           Value: false
-        table:
+        right_inner_finger:
+          Value: false
+        right_inner_finger_pad:
+          Value: false
+        right_inner_knuckle:
+          Value: false
+        right_outer_finger:
+          Value: false
+        right_outer_knuckle:
+          Value: false
+        robotiq_arg2f_base_link:
           Value: false
         tool0:
-          Value: true
+          Value: false
         world:
           Value: false
       Marker Scale: 0.5
@@ -180,10 +264,25 @@ Visualization Manager:
                       link_6:
                         flange:
                           tool0:
-                            end_effect_point:
-                              {}
-          table:
-            {}
+                            gripper_support_link:
+                              coupling_link:
+                                robotiq_arg2f_base_link:
+                                  left_inner_knuckle:
+                                    {}
+                                  left_outer_knuckle:
+                                    left_outer_finger:
+                                      left_inner_finger:
+                                        left_inner_finger_pad:
+                                          {}
+                                  right_inner_knuckle:
+                                    {}
+                                  right_outer_knuckle:
+                                    right_outer_finger:
+                                      right_inner_finger:
+                                        right_inner_finger_pad:
+                                          {}
+                              end_effect_point:
+                                {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -250,5 +349,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 349
-  Y: 27
+  X: 197
+  Y: 87

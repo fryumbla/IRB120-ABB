@@ -26,6 +26,7 @@
     <include if="$(arg robot)" file="$(find irb120_description)/launch/real_irb120_moveit.launch" />
 
     <include if="$(arg gripper_2f)" file="$(find irb120_description)/launch/real_irb120_2fgripper_moveit.launch" />
+    <include if="$(arg gripper_2f)" file="$(find robotiq_2f_gripper_control)/launch/robotiq_2f_gripper_control.launch" />
 
     <include if="$(arg gripper_3f)" file="$(find irb120_description)/launch/real_irb120_3fgripper_moveit.launch" />
 
