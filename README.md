@@ -26,12 +26,13 @@ There are a number of dependencies in this package, since the ABB robot is opera
 * ros-melodic-abb
 * ros-melodic-moveit
 * ros-melodic-joint-state-publisher-gui
+* ros-melodic-joint-trajectory-controller
 
 Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
 
 **WARNING: If you planing use grippers with this robot. You need copy the gripper package https://github.com/fryumbla/Robotiq-grippers.git**
 
-sudo pip install ds4drv
+*If you want control with the joystick control. You need install: `sudo pip install ds4drv`
 
 
 ## 2. Structure of Packages
@@ -89,13 +90,13 @@ This node publish the joints goals in the topic `/joint_goals` or the joints sta
 
 1. Launch the robot in gazebo
    ```
-   roslaunch bioloidgp_social_robot gazebo.launch
+   roslaunch irb120_gazebo gazebo.launch
 
    ```
 
 2. Run the next node for the communication ROS to Gazebo
    ```
-   rosrun bioloid_gp_master communitation_gazebo.py 
+   rosrun irb120_gazebo communitation_gazebo.py 
    ```
 To see the list of movement, type `rosrun bioloid_gp_master movement.py` program, introduce the number do you want to move `1 2 3` and `Enter`.
 This node publis the joints goals in the topic `/joint_goals`
