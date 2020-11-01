@@ -11,30 +11,27 @@
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />
 
-    <!-- Spawn controllers and joint_state_publisher's for ABB IRB 120 -->
-    <!-- Gazebo already publishes joint states: disable joint_state_publisher temporarily. -->
     <rosparam command="load" file="$(find irb120_description)/config/joint_names_irb120.yaml" />
 
-    <include file="$(find abb_driver)/launch/robot_interface.launch">
+    <include file="$(find irb120_description)/launch/robot_interface.launch">
         <arg name="robot_ip" value="$(arg robot_ip)"/>
         <!-- <arg name="J23_coupled" value="$(arg J23_coupled)" /> -->
     </include>
 
-    <!-- <node name="joint_states" pkg="joint_state_publisher" type="joint_state_publisher"/> -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- The node for merger the ABB and ROBOTIQ gripper joints states -->
+    <node pkg="irb120_master" type="real_robot_gripper.py" name="ABB_Robotiq_states" output="screen"/>
+    
+
+    <!-- Diferent configuration of the robot and grippers in MoveIT -->
     
     <include if="$(arg robot)" file="$(find irb120_description)/launch/real_irb120_moveit.launch" />
 
-    <include if="$(arg gripper_2f)" file="$(find irb120_description)/launch/real_irb120_2fgripper_moveit.launch" />
     <include if="$(arg gripper_2f)" file="$(find robotiq_2f_gripper_control)/launch/robotiq_2f_gripper_control.launch" />
+    <include if="$(arg gripper_2f)" file="$(find irb120_description)/launch/real_irb120_2fgripper_moveit.launch" />
 
     <include if="$(arg gripper_3f)" file="$(find irb120_description)/launch/real_irb120_3fgripper_moveit.launch" />
+    <include if="$(arg gripper_3f)" file="$(find robotiq_3f_gripper_control)/launch/robotiq_3f_gripper_control.launch" />
 
-    <include if="$(arg table)" file="$(find irb120_description)/launch/real_irb120_table_moveit.launch" />
-    
-    <!-- Start the publisher for the left hand (the only hand) -->
-    <!-- <include file="$(find rise_assembler_control)/launch/gripper_control.launch" /> -->
-    <!-- <node name="joint_states" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
-    
+    <include if="$(arg table)" file="$(find irb120_description)/launch/real_irb120_table_moveit.launch" />   
 
 </launch>

@@ -18,7 +18,6 @@
         <link name="link_6" />
         <link name="flange" />
         <link name="tool0" />
-        <link name="gripper_support_link" />
         <link name="end_effect_point" />
         <joint name="joint_1" />
         <joint name="joint_2" />
@@ -28,7 +27,6 @@
         <joint name="joint_6" />
         <joint name="joint_6-flange" />
         <joint name="link_6-tool0" />
-        <joint name="irb120_joint_gripper_support" />
         <joint name="end_effect_point" />
     </group>
     <group name="gripper_2f">
@@ -88,13 +86,21 @@
         <joint name="joint_5" value="1.5707" />
         <joint name="joint_6" value="0" />
     </group_state>
+    <group_state name="middle" group="gripper_2f">
+        <joint name="finger_joint" value="0.4" />
+        <joint name="left_inner_finger_joint" value="0" />
+        <joint name="left_inner_knuckle_joint" value="0" />
+        <joint name="right_inner_finger_joint" value="0" />
+        <joint name="right_inner_knuckle_joint" value="0" />
+        <joint name="right_outer_knuckle_joint" value="0" />
+    </group_state>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="FixedBase" type="fixed" parent_frame="world" child_link="world" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="coupling_link" reason="Never" />
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link_2" reason="Never" />
-    <disable_collisions link1="coupling_link" link2="gripper_support_link" reason="Adjacent" />
+    <disable_collisions link1="coupling_link" link2="end_effect_point" reason="Adjacent" />
     <disable_collisions link1="coupling_link" link2="left_inner_finger" reason="Never" />
     <disable_collisions link1="coupling_link" link2="left_inner_finger_pad" reason="Never" />
     <disable_collisions link1="coupling_link" link2="left_inner_knuckle" reason="Never" />
@@ -105,31 +111,26 @@
     <disable_collisions link1="coupling_link" link2="link_3" reason="Never" />
     <disable_collisions link1="coupling_link" link2="link_4" reason="Never" />
     <disable_collisions link1="coupling_link" link2="link_5" reason="Never" />
-    <disable_collisions link1="coupling_link" link2="link_6" reason="Never" />
+    <disable_collisions link1="coupling_link" link2="link_6" reason="Adjacent" />
     <disable_collisions link1="coupling_link" link2="right_inner_finger" reason="Never" />
     <disable_collisions link1="coupling_link" link2="right_inner_finger_pad" reason="Never" />
     <disable_collisions link1="coupling_link" link2="right_inner_knuckle" reason="Never" />
     <disable_collisions link1="coupling_link" link2="right_outer_finger" reason="Never" />
     <disable_collisions link1="coupling_link" link2="right_outer_knuckle" reason="Never" />
     <disable_collisions link1="coupling_link" link2="robotiq_arg2f_base_link" reason="Adjacent" />
-    <disable_collisions link1="end_effect_point" link2="gripper_support_link" reason="Adjacent" />
+    <disable_collisions link1="end_effect_point" link2="left_inner_finger" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="left_inner_finger_pad" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="left_outer_finger" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="left_outer_knuckle" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_3" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_4" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_5" reason="Never" />
     <disable_collisions link1="end_effect_point" link2="link_6" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="left_inner_finger" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="left_inner_knuckle" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="left_outer_knuckle" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="link_2" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="link_3" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="link_5" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="link_6" reason="Adjacent" />
-    <disable_collisions link1="gripper_support_link" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="gripper_support_link" link2="robotiq_arg2f_base_link" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="right_inner_finger" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="right_inner_finger_pad" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="right_outer_finger" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="right_outer_knuckle" reason="Never" />
+    <disable_collisions link1="end_effect_point" link2="robotiq_arg2f_base_link" reason="Default" />
     <disable_collisions link1="left_inner_finger" link2="left_inner_finger_pad" reason="Adjacent" />
     <disable_collisions link1="left_inner_finger" link2="left_inner_knuckle" reason="Default" />
     <disable_collisions link1="left_inner_finger" link2="left_outer_finger" reason="Adjacent" />
@@ -209,7 +210,6 @@
     <disable_collisions link1="link_4" link2="right_inner_knuckle" reason="Never" />
     <disable_collisions link1="link_4" link2="right_outer_finger" reason="Never" />
     <disable_collisions link1="link_4" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="link_4" link2="robotiq_arg2f_base_link" reason="Never" />
     <disable_collisions link1="link_5" link2="link_6" reason="Adjacent" />
     <disable_collisions link1="link_5" link2="right_inner_finger" reason="Never" />
     <disable_collisions link1="link_5" link2="right_inner_finger_pad" reason="Never" />

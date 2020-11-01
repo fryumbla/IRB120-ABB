@@ -25,7 +25,7 @@ There are a number of dependencies in this package, since the ABB robot is opera
 * ros-melodic-industrial-utils
 * ros-melodic-abb
 * ros-melodic-moveit
-* ros-melodic-joint-state-publisher-gui
+* ros-melodic-joint-state-publisheser-gui
 * ros-melodic-joint-trajectory-controller
 
 Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
@@ -37,7 +37,7 @@ Now,Extract the metapackage `IRB120-ABB` into `${ros_workspace}/src`. `catkin_ma
 
 ## 2. Structure of Packages
 
-* **irb120_description:** This package contains the URDF and XACRO friles for diferents configuration of the robot with grippers.
+* **irb120_description:** This package contains the URDF and XACRO files for diferents configuration of the robot with grippers.
 * **irb120_master:** This pasckage contains a diferrents examples of motion used MoveIt and the joystick&keyboard control of the real robot.
 * **irb120_vrep:** This package contains the communication with V-REP simulator including examples and scenes
 * **irb120_configuration_moveit:** This package contains the diferent MoveIt configuration of diferents configuration of the robot
@@ -79,12 +79,12 @@ Open terminal and `roscore` and `Enter`.
    ```
    rosrun irb120_vrep comunication
    ```
-4. You can control with publish direct the Jointstates or generate other but you need change the subscribe in the **vrep_control.cpp** file
+4. You can control with publishes direct the Jointstates or generate other but you need change the subscribe in the **vrep_control.cpp** file
 
-You can find a example to publish a new joint mesage:
+You can find a example to publishes a new joint mesage:
 
 To see the list of movement, type `rosrun irb120_vrep movement.py` program, introduce the number do you want to move `1 2 3 4 5` and `Enter`.
-This node publish the joints goals in the topic `/joint_goals` or the joints states in the topic `/joint_states`
+This node publishes the joints goals in the topic `/joint_goals` or the joints states in the topic `/joint_states`
 
 #### 3.1.2 Gazebo Simulation (in construction)
 
@@ -99,22 +99,28 @@ This node publish the joints goals in the topic `/joint_goals` or the joints sta
    rosrun irb120_gazebo communitation_gazebo.py 
    ```
 To see the list of movement, type `rosrun bioloid_gp_master movement.py` program, introduce the number do you want to move `1 2 3` and `Enter`.
-This node publis the joints goals in the topic `/joint_goals`
+This node publisheses the joints goals in the topic `/joint_goals`
 
 ### 3.2. Real Robot
 
-The real robot work with the moveit_configuration package for precaution collission in our workspace or enviroment
+The real robot work with the moveit_configuration package for precaution collision in our workspace or environment
 
 Setup the Robot and turn on. 
 
-2. Launch the robot
+1. Launch the robot
    ```
    roslaunch irb120_description real_robot.launch robot:=true
    ```
-   If you need see other configuration you change robot:=true for **gripper_2f:=true** or **gripper_3f:=true**
+
+2. If you need see other configuration you change robot:=true for **gripper_2f:=true** or **gripper_3f:=true**. First connect the gripper and run the next line
+  
    ```
+   sudo chmod 666 /dev/ttyUSB0
+
    roslaunch irb120_description real_robot.launch gripper_2f:=true
    ```
+
+
 
 <!-- moveit
 
