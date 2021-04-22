@@ -11,6 +11,8 @@
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />
 
+    <!-- <group ns="irb120"> -->
+
     <rosparam command="load" file="$(find irb120_description)/config/joint_names_irb120.yaml" />
 
     <include file="$(find irb120_description)/launch/robot_interface.launch">
@@ -19,7 +21,7 @@
     </include>
 
     <!-- The node for merger the ABB and ROBOTIQ gripper joints states -->
-    <node pkg="irb120_master" type="real_robot_gripper.py" name="ABB_Robotiq_states" output="screen"/>
+    <!-- <node pkg="irb120_master" type="real_robot_gripper.py" name="ABB_Robotiq_states" output="screen"/> -->
     
 
     <!-- Diferent configuration of the robot and grippers in MoveIT -->
@@ -33,5 +35,7 @@
     <include if="$(arg gripper_3f)" file="$(find robotiq_3f_gripper_control)/launch/robotiq_3f_gripper_control.launch" />
 
     <include if="$(arg table)" file="$(find irb120_description)/launch/real_irb120_table_moveit.launch" />   
+
+    <!-- </group> -->
 
 </launch>

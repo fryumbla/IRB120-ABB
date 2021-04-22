@@ -27,23 +27,22 @@
   <!-- robot_state: publishes joint positions and robot-state data
                    (from socket connection to robot) -->
   <node pkg="abb_driver" type="robot_state" name="robot_state" >
-    <remap from="/robot_state" to="/ABB/robot_state"/>
-    <remap from="/joint_states" to="/ABB/joint_states"/>
+    <!-- <remap from="/robot_state" to="/ABB/robot_state"/>
+    <remap from="/joint_states" to="/ABB/joint_states"/> -->
     <!-- <remap from="/robot_status" to="/ABB/robot_status"/> -->
-    <remap from="/feedback_states" to="/ABB/feedback_states"/>
+    <!-- <remap from="/feedback_states" to="/ABB/feedback_states"/> -->
   </node>
 
   
   <!-- motion_download_interface: sends robot motion commands by DOWNLOADING path to robot
                                   (using socket connection to robot) -->
   <node pkg="abb_driver" type="motion_download_interface" name="motion_download_interface">
-    <remap from="/motion_download_interface" to="/ABB"/>
+    <!-- <remap from="/motion_download_interface" to="/ABB"/> -->
   </node>
   
   <!-- joint_trajectory_action: provides actionlib interface for high-level robot control -->
   <node pkg="industrial_robot_client" type="joint_trajectory_action" name="joint_trajectory_action">
-    
-    <remap from="/joint_trajectory_action" to="/irb120_controller/joint_trajectory_action"/>
+    <!-- <remap from="/irb120/joint_trajectory_action" to="/joint_trajectory_action"/> -->
   </node>
 
 </launch>
